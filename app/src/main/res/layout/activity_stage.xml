@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:layout_marginBottom="30dp"
+    android:layout_height="match_parent"
+    tools:context="inc.appscode0.actionbound.StageActivity">
+
+
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        tools:context="inc.appscode0.actionbound.StageActivity"
+        android:layout_below="@+id/view3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_height="250dp" />
+
+    <com.beardedhen.androidbootstrap.BootstrapLabel
+        android:id="@+id/textView37"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:bootstrapBrand="regular"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:text="Bound name" />
+
+    <com.beardedhen.androidbootstrap.BootstrapLabel
+        android:id="@+id/textView38"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:bootstrapBrand="primary"
+        android:layout_alignBottom="@+id/textView37"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:text="By Chris Obure" />
+
+    <View
+        android:id="@+id/view2"
+        android:paddingTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/textView38"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="6dp"
+        android:background="@android:color/black" />
+
+    <TextView
+        android:id="@+id/textView39"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/view2"
+        android:text="TextView" />
+
+    <RatingBar
+        android:id="@+id/ratingBar11"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView39" />
+
+    <RatingBar
+        android:id="@+id/ratingBar12"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ratingBar11" />
+
+    <RatingBar
+        android:id="@+id/ratingBar13"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ratingBar12" />
+
+    <RatingBar
+        android:id="@+id/ratingBar14"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ratingBar13" />
+
+    <RatingBar
+        android:id="@+id/ratingBar15"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ratingBar14" />
+
+    <TextView
+        android:id="@+id/textView40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ratingBar11"
+        android:layout_toEndOf="@+id/ratingBar11"
+        android:layout_toRightOf="@+id/ratingBar11"
+        android:text="Overall rating" />
+
+    <TextView
+        android:id="@+id/textView41"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ratingBar11"
+        android:layout_toEndOf="@+id/ratingBar11"
+        android:layout_toRightOf="@+id/ratingBar11"
+        android:text="Fun" />
+
+    <TextView
+        android:id="@+id/textView42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ratingBar12"
+        android:layout_toEndOf="@+id/ratingBar12"
+        android:layout_toRightOf="@+id/ratingBar12"
+        android:text="Variety" />
+
+    <TextView
+        android:id="@+id/textView43"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ratingBar15"
+        android:layout_toEndOf="@+id/ratingBar14"
+        android:layout_toRightOf="@+id/ratingBar14"
+        android:text="Difficulty" />
+
+    <TextView
+        android:id="@+id/textView44"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView43"
+        android:layout_toEndOf="@+id/ratingBar13"
+        android:layout_toRightOf="@+id/ratingBar13"
+        android:text="Interesting places" />
+
+
+
+    <View
+        android:id="@+id/view3"
+        android:paddingTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/ratingBar15"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="6dp"
+        android:background="@android:color/black" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/button6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Bound"
+        android:layout_marginTop="20dp"
+        app:bootstrapBrand="primary"
+        app:roundedCorners="true"
+        android:layout_below="@+id/map"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

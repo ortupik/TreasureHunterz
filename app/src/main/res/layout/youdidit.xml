@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="20dp"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="79dp"
+        app:srcCompat="@drawable/congrats"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <com.beardedhen.androidbootstrap.BootstrapLabel
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        app:roundedCorners="true"
+        app:bootstrapBrand="success"
+        android:layout_below="@+id/imageView4"
+        android:layout_centerHorizontal="true"
+        android:text="Congratlations!! You did it." />
+
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:layout_width="match_parent"
+        android:layout_below="@+id/textView9"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/showresults"
+        android:layout_marginTop="20dp"
+        app:roundedCorners="true"
+        app:bootstrapBrand="info"
+        android:text="Show Results"
+
+        />
+</RelativeLayout>

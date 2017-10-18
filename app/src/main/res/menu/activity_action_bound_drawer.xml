@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single" >
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/ic_find_in_page"
+            android:title="Find a boubd" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/qr"
+            android:title="Scan QR code" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/loc"
+            android:title="Bonds Nearby" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/settings"
+            android:title="Settings" />
+
+        <item
+            android:id="@+id/info"
+            android:icon="@drawable/info"
+            android:title="Info" />
+
+    </group>
+
+    <item android:title="Others">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share ActionBound" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@android:drawable/dark_header"
+                android:title="Help" />
+        </menu>
+    </item>
+
+</menu>

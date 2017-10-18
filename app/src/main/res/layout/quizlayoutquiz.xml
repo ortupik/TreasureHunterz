@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/relative_layout">
+
+    <com.beardedhen.androidbootstrap.BootstrapLabel
+        android:id="@+id/textView26"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bootstrapBrand="info"
+        android:text="Answer the question to proceed"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        app:bootstrapHeading="h4" />
+    <br.tiagohm.markdownview.MarkdownView
+        android:id="@+id/textView35"
+        app:escapeHtml="false"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="23dp"
+        android:text="Did this movie reach box office ?"
+        android:layout_below="@+id/textView26"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:id="@+id/listview"
+        android:layout_above="@+id/button7"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textInputLayout"
+        android:layout_centerHorizontal="true" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:padding="10dp"
+        android:id="@+id/textInputLayout"
+        android:layout_below="@+id/textView35"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="your answer"
+            android:layout_marginTop="15dp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/button7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:roundedCorners="true"
+        app:bootstrapBrand="success"
+        android:text="Next !"
+        app:bootstrapSize="lg"
+        android:layout_below="@+id/textInputLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>

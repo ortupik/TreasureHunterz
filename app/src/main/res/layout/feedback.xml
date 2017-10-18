@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:layout_height="wrap_content">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+
+    <RelativeLayout
+   android:layout_width="match_parent"
+
+    android:layout_height="wrap_content">
+
+    <com.beardedhen.androidbootstrap.AwesomeTextView
+        android:id="@+id/textView12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Did you like it? Give a feedback to the creator of the Bound 'Searcher'" />
+    <com.beardedhen.androidbootstrap.BootstrapEditText
+        android:layout_width="match_parent"
+        android:layout_below="@+id/textView12"
+        android:layout_height="wrap_content"
+        android:id="@+id/bootstrapEditText" />
+
+    <RatingBar
+        android:id="@+id/ratingBar5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bootstrapEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bootstrapEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:text="Overall rating" />
+
+    <RatingBar
+        android:id="@+id/ratingBar6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView14"
+        android:layout_alignLeft="@+id/ratingBar5"
+        android:layout_alignStart="@+id/ratingBar5" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fun"
+        android:layout_below="@+id/ratingBar5"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Variety"
+        android:layout_below="@+id/ratingBar6"
+        android:layout_centerHorizontal="true" />
+
+    <RatingBar
+        android:id="@+id/ratingBar7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/ratingBar6"
+        android:layout_alignRight="@+id/ratingBar6"
+        android:layout_below="@+id/textView15" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ratingBar7"
+        android:layout_centerHorizontal="true"
+        android:text="Interesting places" />
+
+    <RatingBar
+        android:id="@+id/ratingBar8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/ratingBar7"
+        android:layout_alignRight="@+id/ratingBar7"
+        android:layout_below="@+id/textView16" />
+
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Difficulty"
+        android:layout_below="@+id/ratingBar8"
+        android:layout_centerHorizontal="true" />
+
+    <RatingBar
+        android:id="@+id/ratingBar9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ratingBar8"
+        android:layout_alignStart="@+id/ratingBar8"
+        android:layout_below="@+id/textView17" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/ratingBar9"
+        android:text="Educational" />
+
+    <RatingBar
+        android:id="@+id/ratingBar10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/ratingBar9"
+        android:layout_alignRight="@+id/ratingBar9"
+        android:layout_below="@+id/textView18" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="match_parent"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/send"
+            android:layout_below="@+id/ratingBar10"
+            android:layout_centerHorizontal="true"
+            app:roundedCorners="true"
+            android:text="Send"
+            app:bootstrapBrand="success"
+
+            android:layout_height="45dp" />
+</RelativeLayout>
+</ScrollView>
+    </RelativeLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.beardedhen.androidbootstrap.BootstrapLabel
+        android:id="@+id/textView36"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="FAQS"
+        app:bootstrapBrand="success"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+
+
+    <TextView
+        android:id="@+id/textView49"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView36"
+        android:text="Hunt Challenges is an app for playing digitally interactive scavenger hunts to lead the learner on a path of discovery. We call these multimedia based rallys 'Bounds'. The program quite literally augments our reality by enhancing peoples’ real-life interaction whilst using their smartphones and tablets. You can create a digital timeline of events or a places of interest tour, with the use of GPS coordinates and pre-placed codes and mysteries. Excellent for ice-breaking exercises, historical or archaeological sites, or more simply presenting a vision for the future. Take full advantage of the huge potential of gamification with the Bound-Creator's extensive game elements and tools like GPS locations, directions, maps, compass, pictures, videos, quizzes, missions, tournaments, QR codes and much more to create fun and exciting mobile app-based adventures. Publish your own smartphone rally to others and let them play it as iPad rally, tablet tour, scavenger hunt, paper chase or treasure hunt for friends or professionally managed as guided tour, at incentive events, for team building or employee trainings." />
+
+
+
+
+</RelativeLayout>
