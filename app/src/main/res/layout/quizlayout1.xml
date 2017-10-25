@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/primarylayout"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:padding="5dp"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:id="@+id/primarylayout"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/button2"
+
+        <br.tiagohm.markdownview.MarkdownView
+
+            app:escapeHtml="false"
+            android:id="@+id/markdownView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:roundedCorners="true"
-            app:bootstrapSize="sm"
-            app:bootstrapBrand="primary"
-            android:text="Next!"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:gravity="bottom" />
+            android:layout_height="wrap_content"/>
 
-    </LinearLayout>
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bootstrapBrand="primary"
+        android:text="Next"
+        android:layout_below="@+id/markdownView"
+        android:layout_marginTop="5dp" />
 
 
-</ScrollView>
+    </RelativeLayout>
+
+

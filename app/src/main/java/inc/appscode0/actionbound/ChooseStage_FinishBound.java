@@ -71,6 +71,9 @@ import br.tiagohm.markdownview.css.InternalStyleSheet;
 import br.tiagohm.markdownview.css.styles.Github;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
+import static inc.appscode0.actionbound.BoundsAdapter.bound_id;
+import static inc.appscode0.actionbound.BoundsAdapter.start_node;
+
 public class ChooseStage_FinishBound extends AppCompatActivity {
     public static final String MyPREFERENCES = "MyPrefs";
     public static int qrcode = 0;
@@ -83,10 +86,10 @@ public class ChooseStage_FinishBound extends AppCompatActivity {
     public static String team_namename;
     static String data;
     static String play_mode;
-    static int previous, start_node;
+    static int previous;
     static String bound_name;
     static int length;
-    static String bound_id, bid;
+    static String  bid;
     static String url;
     static Fragment fragment;
     SharedPreferences sharedpreferences;
@@ -102,14 +105,8 @@ public class ChooseStage_FinishBound extends AppCompatActivity {
         Intent intent = getIntent();
         data = intent.getStringExtra("data");
         play_mode=intent.getStringExtra("play_mode");
-        bound_id=intent.getStringExtra("bound_id");
         bid=bound_id;
-       // start_node = 0;
-      //  Toast.makeText(this, "bound id"+ bound_id, Toast.LENGTH_SHORT).show();
-
-
         bound_name=intent.getStringExtra("bound_name");
-
         url=intent.getStringExtra("url");
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -162,7 +159,9 @@ public class ChooseStage_FinishBound extends AppCompatActivity {
                 } else {
 
 
-                    if (start_node == 0) {
+                    if (start_node == 0)
+                    {
+
                         Fragment fragment3 = new FragmentStartInformation();
                         Bundle b = new Bundle();
                         b.putString("bound_name",bound_name);
@@ -241,6 +240,8 @@ public class ChooseStage_FinishBound extends AppCompatActivity {
 
     public static class FragmentFeedback extends Fragment
     {
+
+        float o,f,v,i,d,e;
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
@@ -264,19 +265,59 @@ public class ChooseStage_FinishBound extends AppCompatActivity {
             BootstrapButton send = (BootstrapButton) rootView.findViewById(R.id.send);
 
 
+            ratingBaroverall.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+                @Override
+                public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                    o=v;
+                }
+            });
+            ratingBarfun.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+                @Override
+                public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                    f=v;
+                }
+            });
+            ratingBarvariety.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+                @Override
+                public void onRatingChanged(RatingBar ratingBar, float vv, boolean b) {
+                    v=vv;
+                }
+            });
+            ratingBarintresting.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+                @Override
+                public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                    i=v;
+                }
+            });
+            ratingBardifficult.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+                @Override
+                public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                    d=v;
+                }
+            });
+
+            ratingBareducational.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+                @Override
+                public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                    e=v;
+                }
+            });
+
+
+
             send.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View view) {
                     //Toast.makeText(getActivity(), bound_id, Toast.LENGTH_SHORT).show();
                     send_date(
                             String.valueOf(bound_id),
                             "",
-                            ratingBaroverall.getNumStars(),
-                            ratingBarfun.getNumStars(),
-                            ratingBarvariety.getNumStars(),
-                            ratingBarintresting.getNumStars(),
-                            ratingBardifficult.getNumStars(),
-                            ratingBareducational.getNumStars(), team_namename
+                            o,
+                            f,
+                            v,
+                            i,
+                            d,
+                            e, team_namename
 
                     );
                 }
@@ -298,13 +339,14 @@ public class ChooseStage_FinishBound extends AppCompatActivity {
             progress.setMessage("Saving your ratings");
             progress.show();
 
-           // Toast.makeText(getActivity(), bound_id, Toast.LENGTH_SHORT).show();
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.url+"insertRatings",
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             progress.dismiss();
+
+                            //Toast.makeText(getActivity(), response, Toast.LENGTH_SHORT).show();
 
                             new AlertDialog.Builder(getActivity())
                                     .setTitle("Huuray!")
@@ -337,6 +379,10 @@ public class ChooseStage_FinishBound extends AppCompatActivity {
                     params.put("interesting_places", Float.toString(intrestingr));
                     params.put("difficulty", Float.toString(difficult));
                     params.put("educational", Float.toString(education));
+
+
+
+
                     return params;
                 }
 
@@ -372,8 +418,8 @@ public class ChooseStage_FinishBound extends AppCompatActivity {
 
             };
             RequestQueue requestQueue2 = Volley.newRequestQueue(getActivity());
-            requestQueue2.add(stringRequest2);
-
+           requestQueue2.add(stringRequest2);
+//
 
         }
 
@@ -1607,7 +1653,7 @@ public class ChooseStage_FinishBound extends AppCompatActivity {
                     String jssjss = jsonObject.getString("data");
                     JSONArray json2 = new JSONArray(jssjss);
 
-                    LinearLayout linearLayout = (LinearLayout) rootView.findViewById(R.id.primarylayout);
+                    RelativeLayout linearLayout = (RelativeLayout) rootView.findViewById(R.id.primarylayout);
                     RelativeLayout textLayout = (RelativeLayout) LayoutInflater.from(getActivity()).inflate(R.layout.layout_text, null);
                     RelativeLayout imageLayout = (RelativeLayout) LayoutInflater.from(getActivity()).inflate(R.layout.layout_image, null);
                     RelativeLayout videolayout = (RelativeLayout) LayoutInflater.from(getActivity()).inflate(R.layout.layout_video, null);
@@ -1616,11 +1662,9 @@ public class ChooseStage_FinishBound extends AppCompatActivity {
 
                     player = (EasyVideoPlayer) videolayout.findViewById(R.id.player);
 
-                    MarkdownView markdownView = (MarkdownView) textLayout.findViewById(R.id.markdownView);
-
+                    MarkdownView markdownView = (MarkdownView) rootView.findViewById(R.id.markdownView);
                     InternalStyleSheet mStyle = new Github();
                     markdownView.addStyleSheet(mStyle);
-                    //http://stackoverflow.com/questions/6370690/media-queries-how-to-target-desktop-tablet-and-mobile
                     mStyle.addMedia("screen and (min-width: 320px)");
                     mStyle.addRule("h1", "color: green");
                     mStyle.endMedia();
@@ -1647,7 +1691,7 @@ public class ChooseStage_FinishBound extends AppCompatActivity {
                                 // Toast.makeText(getActivity(), information_text, Toast.LENGTH_SHORT).show();
                                 // showText.setText(information_text);
                                 markdownView.loadMarkdown(information_text);
-                                linearLayout.addView(textLayout);
+                             //   linearLayout.addView(textLayout);
 
 
                             } else if (t.equals("image")) {

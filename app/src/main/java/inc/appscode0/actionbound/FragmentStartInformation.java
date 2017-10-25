@@ -4,12 +4,14 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -28,6 +30,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import static inc.appscode0.actionbound.BoundsAdapter.bound_id;
+
 /**
  * Created by Chris on 11/10/2017.
  */
@@ -37,8 +41,9 @@ public  class FragmentStartInformation extends Fragment {
     private ImageView holder;
     private static String bound_name;
     private static int length;
-    private static String bound_id, bid;
+    private static String  bid;
     private static String url;
+    RatingBar ratingBaroverall, ratingBarfun, ratingBarvariety, ratingBarintresting, ratingBardifficult, ratingBareducational;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,6 +54,11 @@ public  class FragmentStartInformation extends Fragment {
         Bundle b = getArguments();
         bound_name = b.getString("bound_name");
         bs.setText(bound_name);
+
+
+
+
+    //   Toast.makeText(getActivity(), String.valueOf(bound_id), Toast.LENGTH_SHORT).show();
 
         String url = b.getString("url");
 
@@ -67,97 +77,129 @@ public  class FragmentStartInformation extends Fragment {
 
                     }
                 });
-
         BootstrapButton send = (BootstrapButton) rootView.findViewById(R.id.send);
 
 
         final ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Fetching ratings");
         progressDialog.show();
-        RequestQueue queue = Volley.newRequestQueue(getActivity());
+       // progressDialog.cancel();
 
         url = Constants.url+"getRatings";
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
         StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response)
             {
                 progressDialog.cancel();
+              //  Toast.makeText(getActivity(), response, Toast.LENGTH_SHORT).show();
+
+
 
                 try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    String status = jsonObject.getString("status");
 
-                    if(status.equals("1")) {
+                    JSONObject json = new JSONObject(response);
+                    String ssd = json.getString("status");
 
-                        String data = jsonObject.getString("data");
-                        JSONArray json2 = new JSONArray(data);
+                    if (ssd.equals("0"))
+                    {
 
 
-                        String fun="",
-                                overall_rating="",
-                                variety="",
-                                interesting_places= "",
-                                educational= "",
-                                difficulty= "";
+                    } else
+                    {
 
 
 
-                        for (int i = 0; i < json2.length(); i++)
-                        {
-                            JSONObject e = json2.getJSONObject(i);
-                            fun= e.getString("fun");
-                            overall_rating= e.getString("overall_rating");
-                            variety= e.getString("variety");
-                            interesting_places= e.getString("interesting_places");
-                            educational= e.getString("educational");
-                            difficulty= e.getString("difficulty");
+
+                        JSONObject e = json.getJSONObject("data");
+                        String fun = e.getString("variety");
+                        String variety=e.getString("variety");
+                        String interesting_places=e.getString("interesting_places");
+                        String difficulty=e.getString("difficulty");
+                        String educational=e.getString("educational");
+                        String overall_rating=e.getString("overall_rating");
 
 
-                        }
-
-                        final RatingBar ratingBaroverall, ratingBarfun, ratingBarvariety, ratingBarintresting, ratingBardifficult, ratingBareducational;
-
-                        if(!overall_rating.equals(null))
+                        if (!overall_rating.equals(null))
                         {
                             ratingBaroverall = (RatingBar) rootView.findViewById(R.id.ratingBar5);
-                            ratingBaroverall.setRating(Integer.parseInt(overall_rating));
+                            ratingBaroverall.setRating(Float.parseFloat(overall_rating));
                         }
 
-                        if(!fun.equals(null))
+                        if (!fun.equals(null)||!fun.isEmpty())
                         {
                             ratingBarfun = (RatingBar) rootView.findViewById(R.id.ratingBar6);
-                            ratingBarfun.setRating(Integer.parseInt(fun));
+                            ratingBarfun.setRating(Float.parseFloat(fun));
                         }
 
 
-                        if(!variety.equals(null))
+                        if (!variety.equals(null))
                         {
                             ratingBarvariety = (RatingBar) rootView.findViewById(R.id.ratingBar7);
-                            ratingBarvariety.setRating(Integer.parseInt(variety));
+                            ratingBarvariety.setRating(Float.parseFloat(variety));
                         }
 
-                        if(!interesting_places.equals(null))
-                        {
+                        if (!interesting_places.equals(null)) {
                             ratingBarintresting = (RatingBar) rootView.findViewById(R.id.ratingBar8);
-                            ratingBarintresting.setRating(Integer.parseInt(interesting_places));
+                            ratingBarintresting.setRating(Float.parseFloat(interesting_places));
                         }
 
-                        if(!difficulty.equals(null)) {
+                        if (!difficulty.equals(null)) {
                             ratingBardifficult = (RatingBar) rootView.findViewById(R.id.ratingBar10);
-                            ratingBardifficult.setRating(Integer.parseInt(difficulty));
+                            ratingBardifficult.setRating(Float.parseFloat(difficulty));
                         }
 
-                        if(!educational.equals(null))
-                        {
+                        if (!educational.equals(null)) {
                             ratingBareducational = (RatingBar) rootView.findViewById(R.id.ratingBar9);
-                            ratingBareducational.setRating(Integer.parseInt(educational));
+                            ratingBareducational.setRating(Float.parseFloat(educational));
                         }
+
 
                     }
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
+
+
                 }
+                catch (JSONException e)
+                {
+                    Toast.makeText(getActivity(), String.valueOf(e), Toast.LENGTH_SHORT).show();
+                }
+                catch (Exception e)
+                {
+                    Toast.makeText(getActivity(), String.valueOf(e), Toast.LENGTH_SHORT).show();
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             }
@@ -180,6 +222,8 @@ public  class FragmentStartInformation extends Fragment {
         };
 
         queue.add(postRequest);
+
+
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override

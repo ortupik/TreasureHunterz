@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -19,7 +20,13 @@ import com.android.volley.toolbox.Volley;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.security.PublicKey;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import static inc.appscode0.actionbound.ChooseStage_FinishBound.previous;
@@ -27,12 +34,16 @@ import static inc.appscode0.actionbound.ChooseStage_FinishBound.total_points;
 
 public class BoundsAdapter extends RecyclerView.Adapter<BoundsAdapter.ViewHolder>  {
     public static String bound_id;
+    public static int start_node;
     private List<BoundsData> listItems;
     private Context context;
 
+
+public String bounds_data;
     public BoundsAdapter(List<BoundsData> listItems, Context context) {
         this.listItems = listItems;
         this.context = context;
+
 
     }
 
@@ -58,7 +69,79 @@ public class BoundsAdapter extends RecyclerView.Adapter<BoundsAdapter.ViewHolder
         Random r = new Random();
         int Random =10 +  (int)(Math.random()*(91));
         float Rand=0+(float)(Math.random()*6);
-        holder.ratingBar.setRating(Rand);
+
+//fetch ratings
+//http://actionbound.herokuapp.com/getRatings
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.url+"getRatings",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            bounds_data=response;
+                            JSONObject json = new JSONObject(response);
+                            String ssd = json.getString("status");
+
+                            if (ssd.equals("0"))
+                            {
+
+
+                            } else
+                            {
+
+
+
+
+                                JSONObject e = json.getJSONObject("data");
+                                String fun = e.getString("variety");
+                                String variety=e.getString("variety");
+                                String interesting_places=e.getString("interesting_places");
+                                String difficulty=e.getString("difficulty");
+                                String educational=e.getString("educational");
+                                String overall_rating=e.getString("overall_rating");
+
+
+                                holder.ratingBar.setRating(Float.parseFloat(overall_rating));
+
+                            }
+
+
+
+                        } catch (JSONException e)
+                        {
+                            //Toast.makeText(context, String.valueOf(e), Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+
+
+
+                    }
+                }){
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("bound_id",boundsData.getBound_id());
+
+                return params;
+            }
+
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
+
+
+
+
+
+
+
+
 
         holder.boundRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +171,12 @@ public class BoundsAdapter extends RecyclerView.Adapter<BoundsAdapter.ViewHolder
                                         .putExtra("single",boundsData.getBound_category())
                                         .putExtra("distance",boundsData.getBounds_length())
                                         .putExtra("durations",boundsData.getBounds_duration())
-                                        .putExtra("play_mode", boundsData.getPlay_mode());
+                                        .putExtra("play_mode", boundsData.getPlay_mode())
+                                        .putExtra("ratings_data", bounds_data);
+                                start_node=0;
+
+
+
                                 context.startActivity(intent);
 
 
